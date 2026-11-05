@@ -55,3 +55,6 @@ fun SiswaApp(
     }
 }
 
+private fun cancelAndBackToFormulir(navController: NavHostController) {
+    navController.popBackStack(Navigasi.Formulir.name, inclusive = false)
+}
