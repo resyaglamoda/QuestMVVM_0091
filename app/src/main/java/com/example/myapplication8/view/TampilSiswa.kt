@@ -1,4 +1,4 @@
-package com.example.myarsitekturmvm.view
+package com.example.myapplication8.view
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -12,8 +12,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.myarsitekturmvm.R
-import com.example.myarsitekturmvm.model.Siswa
+import com.example.myapplication8.R
+import com.example.myapplication8.Model.Siswa
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -27,6 +27,7 @@ fun TampilSiswa(
         Pair(stringResource(id = R.string.gender), statusUiSiswa.gender),
         Pair(stringResource(id = R.string.alamat), statusUiSiswa.alamat)
     )
+
     Scaffold(
         modifier = modifier,
         topBar = {
@@ -52,7 +53,9 @@ fun TampilSiswa(
                     HorizontalDivider(thickness = dimensionResource(R.dimen.thickness_divider))
                 }
             }
+
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_small)))
+
             Button(
                 modifier = Modifier.fillMaxWidth().padding(dimensionResource(R.dimen.padding_medium)),
                 onClick = onBackButtonClicked
@@ -62,4 +65,3 @@ fun TampilSiswa(
         }
     }
 }
-

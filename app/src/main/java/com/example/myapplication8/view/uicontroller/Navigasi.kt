@@ -1,9 +1,10 @@
-package com.example.myarsitekturmvm.view.uicontroller
+package com.example.myapplication8.view.uicontroller
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -11,10 +12,12 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.myarsitekturmvm.model.DataJK
-import com.example.myarsitekturmvm.view.FormSiswa
-import com.example.myarsitekturmvm.view.TampilSiswa
-import com.example.myarsitekturmvm.viewmodel.SiswaViewModel
+
+// Import disesuaikan dengan huruf besar/kecil folder di panel kiri kamu
+import com.example.myapplication8.Model.DataJK
+import com.example.myapplication8.view.FormSiswa
+import com.example.myapplication8.view.TampilSiswa
+import com.example.myapplication8.ViewModel.SiswaViewModel
 
 enum class Navigasi {
     Formulir,
@@ -27,6 +30,9 @@ fun SiswaApp(
     viewModel: SiswaViewModel = viewModel(),
     navController: NavHostController = rememberNavController()
 ) {
+    // PERBAIKAN: Mengambil state dari ViewModel dengan cara yang benar (collectAsState)
+    val statusUiSiswa by viewModel.statusUI.collectAsState()
+
     Scaffold { isiRuang ->
         NavHost(
             navController = navController,
@@ -44,9 +50,11 @@ fun SiswaApp(
                     modifier = modifier
                 )
             }
+
             composable(route = Navigasi.Detail.name) {
                 TampilSiswa(
-                    statusUiSiswa = viewModel.statusUI.value,
+                    // PERBAIKAN: Panggil variabel statusUiSiswa yang sudah di-collect
+                    statusUiSiswa = statusUiSiswa,
                     onBackButtonClicked = { cancelAndBackToFormulir(navController) },
                     modifier = modifier
                 )

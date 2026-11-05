@@ -1,4 +1,4 @@
-package com.example.myarsitekturmvm.view
+package com.example.myapplication8.view
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.selection.selectable
@@ -12,8 +12,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.example.myarsitekturmvm.R
-
+import com.example.myapplication8.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -88,7 +87,7 @@ fun FormSiswa(
             Spacer(modifier = Modifier.height(20.dp))
             Button(
                 modifier = Modifier.fillMaxWidth(1f),
-                enabled = txtAlamat.isNotEmpty(), // Hanya aktif jika alamat diisi
+                enabled = txtAlamat.isNotEmpty(),
                 onClick = { onSubmitButtonClicked(listData) }
             ) {
                 Text(stringResource(R.string.submit))
@@ -96,9 +95,3 @@ fun FormSiswa(
         }
     }
 }
-
-
-
-
-
-

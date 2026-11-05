@@ -5,16 +5,14 @@ plugins {
 
 android {
     namespace = "com.example.myapplication8"
-    compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
-        }
-    }
+    // Diperbaiki: Menggunakan format standar
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.example.myapplication8"
         minSdk = 24
-        targetSdk = 36
+        // Diperbaiki: targetSdk disamakan dengan compileSdk
+        targetSdk = 37
         versionCode = 1
         versionName = "1.0"
 
@@ -23,9 +21,12 @@ android {
 
     buildTypes {
         release {
-            optimization {
-                enable = false
-            }
+            // Diperbaiki: Format standar proguard
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -46,6 +47,12 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+
+
+    implementation("androidx.navigation:navigation-compose:2.8.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.0")
+
     testImplementation(libs.junit)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
