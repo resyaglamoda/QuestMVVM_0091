@@ -16,3 +16,14 @@ import com.example.myarsitekturmvm.view.FormSiswa
 import com.example.myarsitekturmvm.view.TampilSiswa
 import com.example.myarsitekturmvm.viewmodel.SiswaViewModel
 
+enum class Navigasi {
+    Formulir,
+    Detail
+}
+
+@Composable
+fun SiswaApp(
+    modifier: Modifier = Modifier,
+    viewModel: SiswaViewModel = viewModel(),
+    navController: NavHostController = rememberNavController()
+) {
