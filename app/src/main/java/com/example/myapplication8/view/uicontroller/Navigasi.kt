@@ -44,3 +44,14 @@ fun SiswaApp(
                     modifier = modifier
                 )
             }
+            composable(route = Navigasi.Detail.name) {
+                TampilSiswa(
+                    statusUiSiswa = viewModel.statusUI.value,
+                    onBackButtonClicked = { cancelAndBackToFormulir(navController) },
+                    modifier = modifier
+                )
+            }
+        }
+    }
+}
+
